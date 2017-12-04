@@ -23,7 +23,7 @@ table tr th {
 }
 
 .modal-body {
-  width: 600px;
+    width: 600px;
 }
 
 .form-label {
@@ -50,4 +50,16 @@ input.ng-invalid {
 
 .btn-modal {
     margin: 15px;
+}
+
+div.dataTables_wrapper div.dataTables_length label:before {
+    content: "Mostrar/";
+}
+
+div.dataTables_wrapper div.dataTables_length label:after {
+    content: "/entradas";
+}
+
+div.dataTables_wrapper div.dataTables_filter label:before {
+  content: "Pesquisa/"
 }
