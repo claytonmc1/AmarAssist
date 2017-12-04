@@ -1,0 +1,53 @@
+table tr th {
+    background: #337ab7;
+    color: white;
+    text-align: left;
+    vertical-align: center;
+}
+
+.modal-sm {
+    width: 700px;
+}
+
+.form-cadastro {
+    display: none;
+}
+
+.input-form {
+    width: 400px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background: #f2f2f2;
+}
+
+.modal-body {
+  width: 600px;
+}
+
+.form-label {
+    width: 150px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+input.ng-invalid {
+    background-color: lightcoral;
+}
+
+.panel-heading {
+    text-align: center;
+}
+
+.help-block {
+    width: 245px;
+    text-align: left;
+    color: #999;
+    font-weight: bold;
+    margin: 10px auto;
+}
+
+.btn-modal {
+    margin: 15px;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br" >
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciamento de Contato - Amar Assist</title>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css'>
+  <link rel="stylesheet" href="assets/sweetalert/dist/sweetalert.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container" ng-app="formvalida">
+    <div class="panel" data-ng-controller="validationCtrl">
+      <div class="panel-heading border">    
+      <h2>Gerenciamento de Contato - Amar Assist</h2>
+    </div>
+
+    <div class="btn-modal">
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalCadastro">Cadastrar novo contato</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalCadastro" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Cadastrar novo contato</h4>
+          </div>
+          <div class="modal-body">
+            <form name="formcontato" novalidate>
+              
+              <div class="form-group">
+                <label class="form-label" for="nome">Nome:</label>
+                <input type="text" class="input-form" name="nome" ng-model="novo_contato.nome" value="{{ novo_contato.nome }}" ng-minlength="3" required>
+                <p ng-show="formcontato.nome.$invalid && !formcontato.nome.$pristine" class="help-block">Nome é obrigatório. Minímo 3 letras.</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">E-mail:</label>
+                <input type="email" class="input-form" name="email" ng-model="novo_contato.email" value="{{ novo_contato.email }}" placeholder="Ex: email@dominio.com" required>
+                <p ng-class="error" ng-show="formcontato.email.$invalid && !formcontato.email.$pristine" class="help-block">Informe um e-mail válido.</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cidade">Cidade:</label>
+                <input type="text" class="input-form" name="cidade" ng-model="novo_contato.cidade" value="{{ novo_contato.cidade }}">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="estado">Estado:</label>
+                <input type="text" class="input-form" name="estado" ng-model="novo_contato.estado" maxlength="2" value="{{ novo_contato.estado }}" placeholder="Ex: SP">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" name="id" ng-model="novo_contato.id">
+            <input type="submit" value="Salvar" ng-click="salvar()" class="btn btn-primary btn-salvar" ng-disabled="!formcontato.$valid">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered bordered table-striped table-condensed datatable" ui-jq="dataTable" ui-options="dataTableOpt">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+          <tbody>
+            <tr ng-repeat="contato in contatos">
+              <td>{{ contato.id }} </td>
+              <td>{{ contato.nome }}</td>
+              <td>{{ contato.email }}</td>
+              <td>{{ contato.cidade }}</td>
+              <td>{{ contato.estado }}</td>
+              <td>
+                <a href="javascript:void(0)" ng-click="editar(contato.id)" data-toggle="modal" data-target="#modalCadastro" class="btn-edit">editar</a> |
+                <a href="javascript:void(0)" ng-click="delete(contato)" class="btn-delete">delete</a>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js'></script>
+  <script src='https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="assets/sweetalert/dist/sweetalert.min.js"></script>
+  <script  src="js/index.js"></script>
+</body>
+</html>
